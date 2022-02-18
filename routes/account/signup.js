@@ -9,18 +9,20 @@ var db = require("../../src/connection");
 router.post("/", function (req, res, next) {
   try {
     let sql = `INSERT INTO user_information (email, password, first_name, last_name) 
-      VALUES ('${req.body.email}', '${req.body.password}', '${req.body.firstName}', '${req.body.lastName}')`;
+      VALUES ('${req.body.email}', '${req.body.password}', 
+      '${req.body.firstName}', '${req.body.lastName}', '${req.body.contactNumber}')`;
     db.query(sql, (err, result) => {
       if (err) throw err;
     });
-  
+
     const email = req.body.email;
 
     const user = { email: email };
 
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '3h' }); 
-    return res.json({accessToken: accessToken});
-
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+      expiresIn: "3h",
+    });
+    return res.json({ accessToken: accessToken });
   } catch (err) {
     return res.status(400).send(err);
   }

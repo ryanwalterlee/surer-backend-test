@@ -26,9 +26,13 @@ CREATE TABLE IF NOT EXISTS carpark_availability.user_information (
   last_name VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
   password VARCHAR(45) NOT NULL,
-  PRIMARY KEY (email),
+  account_number INT NOT NULL AUTO_INCREMENT,
+  contact_number VARCHAR(15) NOT NULL,
+  PRIMARY KEY (account_number),
   UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE)
-ENGINE = InnoDB;
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
