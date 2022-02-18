@@ -8,7 +8,7 @@ var db = require("../../src/connection");
 
 router.post("/", function (req, res, next) {
   try {
-    let sql = `INSERT INTO user_information (email, password, first_name, last_name) 
+    let sql = `INSERT INTO user_information (email, password, first_name, last_name, contact_number) 
       VALUES ('${req.body.email}', '${req.body.password}', 
       '${req.body.firstName}', '${req.body.lastName}', '${req.body.contactNumber}')`;
     db.query(sql, (err, result) => {
