@@ -7,7 +7,7 @@ var db = require("../../src/connection");
 router.delete("/", verifyJWT, function (req, res, next) {
   try {
     let sql = `DELETE FROM user_information 
-      WHERE email = '${req.email}'`;
+      WHERE email = '${req.query.email}'`;
     db.query(sql, (err, result) => {
       if (err) throw err;
     });

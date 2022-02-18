@@ -8,8 +8,8 @@ var db = require("../../src/connection");
 
 router.post("/", function (req, res, next) {
   try {
-    let sql = `INSERT INTO user_information (email, password) 
-      VALUES ('${req.body.email}', '${req.body.password}')`;
+    let sql = `INSERT INTO user_information (email, password, first_name, last_name) 
+      VALUES ('${req.body.email}', '${req.body.password}', '${req.body.firstName}', '${req.body.lastName}')`;
     db.query(sql, (err, result) => {
       if (err) throw err;
     });
