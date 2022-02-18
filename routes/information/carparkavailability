@@ -6,7 +6,17 @@ var db = require('../../src/connection');
 
 router.get('/', verifyJWT, function(req, res, next) {
   try {
+    // get required format for date
+    const today = new Date();
+    const date = today.toISOString().slice(0, 10);
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const dateString = date + 'T' + time; // sample: YYYY-MM-DDTHH:mm:ss
+
     
+
+    console.log(dateString);
+    res.send("found");
+
   } catch (err) {
     return res.status(400).send(err);
   }

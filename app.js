@@ -12,6 +12,7 @@ var signInRouter = require('./routes/account/signin');
 var signUpRouter = require('./routes/account/signup');
 var deleteAccountRouter = require('./routes/account/deleteaccount');
 var memberDetailsRouter = require('./routes/account/memberdetails');
+var carparkAvailabilityRouter = require('./routes/information/carparkavailability');
 
 var db = require('./src/connection');
 
@@ -41,6 +42,7 @@ app.use('/signin', signInRouter);
 app.use('/signup', signUpRouter);
 app.use('/deleteaccount', deleteAccountRouter);
 app.use('/memberdetails', memberDetailsRouter);
+app.use('/carparkavailability', carparkAvailabilityRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
