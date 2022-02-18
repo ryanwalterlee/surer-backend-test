@@ -8,6 +8,9 @@ const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var signInRouter = require('./routes/account/signin');
+var signUpRouter = require('./routes/account/signup');
+var deleteAccountRouter = require('./routes/account/deleteaccount');
 
 var db = require('./src/connection');
 
@@ -33,6 +36,9 @@ app.options('*', cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/signin', signInRouter);
+app.use('/signup', signUpRouter);
+app.use('/deleteaccount', deleteAccountRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
