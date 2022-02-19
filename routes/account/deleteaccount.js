@@ -4,6 +4,7 @@ var verifyJWT = require("./../../src/verifyJWT");
 
 var db = require("../../src/connection");
 
+// sql delete query
 router.delete("/", verifyJWT, function (req, res, next) {
   try {
     let sql = `DELETE FROM user_information 

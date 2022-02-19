@@ -11,6 +11,7 @@ const db = mysql.createConnection({
   multipleStatements: true,
 });
 
+// creates database if it does not exist
 db.query(createTableScript, (err) => {
   if (err) console.log(err);
 })

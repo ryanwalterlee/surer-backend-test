@@ -2,6 +2,7 @@ var express = require("express");
 var jwt = require("jsonwebtoken");
 require("dotenv").config();
 var router = express.Router();
+const bcrypt = require("bcrypt");
 
 var db = require("../../src/connection");
 
@@ -11,6 +12,7 @@ router.post("/", async function (req, res, next) {
       WHERE email = '${req.body.email}'`;
     let password;
 
+    // extracting hashed password from db
     const passwordObject = await db
       .promise()
       .query(sql)
@@ -29,11 +31,12 @@ router.post("/", async function (req, res, next) {
     if (passwordObject.length == 0) return res.status(403).send('email does not exist');
 
     // forbidden (wrong username or password)
-    if (password !== req.body.password) return res.status(403).send("Wrong username or password");
+    const validPassword = await bcrypt.compare(req.body.password, password);
+    if (!validPassword) return res.status(403).send("Wrong username or password");
 
     const user = { email: email };
 
-    // add { expiresIn: '30m' } for expiration of token in 30 min
+    // add { expiresIn: '3h' } for expiration of token in 3h
     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '3h' }); 
     res.json({accessToken: accessToken});
 

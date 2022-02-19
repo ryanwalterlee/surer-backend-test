@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS carpark_availability.user_information (
   first_name VARCHAR(45) NOT NULL,
   last_name VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
-  password VARCHAR(45) NOT NULL,
+  password VARCHAR(100) NOT NULL,
   account_number INT NOT NULL AUTO_INCREMENT,
   contact_number VARCHAR(15) NOT NULL,
   PRIMARY KEY (account_number),

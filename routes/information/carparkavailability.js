@@ -5,6 +5,7 @@ const axios = require('axios');
 
 var db = require('../../src/connection');
 
+// returns data from gov API using curr date and time as params
 router.get('/', verifyJWT, function(req, res, next) {
   try {
     // get required format for date
@@ -15,8 +16,8 @@ router.get('/', verifyJWT, function(req, res, next) {
 
     console.log(dateString);
 
+    // call api using current date and time
     axios.get(`https://api.data.gov.sg/v1/transport/carpark-availability?date_time=${dateString}`).then(resp => {
-      console.log(resp.data);
       res.send(resp.data);
     })
 

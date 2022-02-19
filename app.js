@@ -36,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.options('*', cors());
 
+// list of paths
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/signin', signInRouter);
