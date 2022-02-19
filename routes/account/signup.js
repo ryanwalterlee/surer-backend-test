@@ -4,8 +4,6 @@ var jwt = require("jsonwebtoken");
 
 var db = require("../../src/connection");
 
-// requires a body with userid and password properties
-
 router.post("/", function (req, res, next) {
   try {
     let sql = `INSERT INTO user_information (email, password, first_name, last_name, contact_number) 

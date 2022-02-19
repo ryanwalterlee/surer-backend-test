@@ -9,7 +9,6 @@ const db = mysql.createConnection({
   user: "root",
   password: process.env.DB_LOCAL_PASSWORD,
   multipleStatements: true,
-  database: "carpark_availability"
 });
 
 db.query(createTableScript, (err) => {

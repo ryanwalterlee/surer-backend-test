@@ -5,8 +5,6 @@ var router = express.Router();
 
 var db = require("../../src/connection");
 
-// requires body to have userid and password
-
 router.post("/", async function (req, res, next) {
   try {
     let sql = `SELECT password FROM user_information 
